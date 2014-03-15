@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="zh"><Esri><CreaDate>20131220</CreaDate><CreaTime>20181800</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\aa\arcgis\desktop10.1\ArcToolbox\Toolboxes\Conversion Tools.tbx\RasterToPoint" Date="20131220" Time="201818">RasterToPoint f:\Py4ArcGIS\OC\gauss\gauss5.img f:\Py4ArcGIS\OC\gauss\gauss5.shp VALUE</Process></lineage></DataProperties></Esri></metadata>
