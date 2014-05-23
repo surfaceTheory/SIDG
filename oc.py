@@ -45,10 +45,6 @@ def HASM(shpfile, field, cellsize,IniRasFile=None, reTol=1e-5,
   #md.smooth.pprint()  
   # Create a solver plugin, other solvers can also be tested here
   optimizer = opt.SolverFactory(solver);   instance = md.create()   
-  #optimizer.options["ms_enable"] = 1;  optimizer.options["ms_maxsolves"] = 100; 
-  #optimizer.options["opttol"] = 1e-9;  optimizer.options["feastol"] =1e-9;    
-#  optimizer.options["algorithm"] =5; optimizer.options["par_numthreads"] =4; 
-#  optimizer.options["presolve"] =1; optimizer.options["debug"] =1; 
   results = optimizer.solve(instance);     instance.load(results)  
   F1=model2matrix(md,r,c)
   rere=((F1-F0)**2).sum()/(F0**2).sum(); k+=1 #relative residuals  
@@ -61,21 +57,7 @@ def HASM(shpfile, field, cellsize,IniRasFile=None, reTol=1e-5,
   
   if rere<=reTol:   break
   else:             F0=F1
-  
-  if out_raster is not None:   
-   sOutputFilenameInterm=out_raster[:-4] +"_"+ str(k)+'.img'
-   util.Output2raster(F1, extent.lowerLeft,cellsize, sOutputFilenameInterm)   
-   try:
-    import util
-    util.export2jpg(sOutputFilenameInterm, str(k), 1, symLyr,mxd,bndFile)
-   except: pass        
- print 'Elapsed ' , np.round(time.time()-t1) , ' seconds, ', r, '*' ,c, ',' ,solver
- if out_raster is not None:  
-  try:
-   import util 
-   util.Output2raster(F1, extent.lowerLeft,cellsize, out_raster)
-   util.export2jpg(out_raster, "final", 1, symLyr,mxd, bndFile) 
-  except: pass      
+
  return F1, extent
  
 def H456_rule(md,F0,cellsize,options):  
